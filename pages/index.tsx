@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         Home
       </span>
       <span className="text-3xl text-white drop-shadow-[3px_3px_3px_#000] mt-2">
-        준주의 낙서장
+        준주의 서랍장
       </span>
     </div>
     <div>
