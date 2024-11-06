@@ -15,12 +15,12 @@ jobs:
 
       - name: Install SSH key
         run: |
-          echo "${{ secrets.EC2_PEM_KEY }}" | tr -d '\r' > enjoyjjalseu.pem
-          chmod 400 enjoyjjalseu.pem
+          echo "${{ secrets.EC2_PEM_KEY }}" | tr -d '\r' > my-key.pem
+          chmod 400 my-key.pem
 
       - name: Verify SSH key creation
         run: ls -l my-key.pem
 
       - name: Deploy to EC2
         run: |
-          ssh -vvv -i enjoyjjalseu.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
+          ssh -vvv -i my-key.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-35-156-121.ap-northeast-2.compute.amazonaws.com 'cd FE_jjalseu_playground && git pull origin main && yarn install && yarn build && pm2 restart all'
